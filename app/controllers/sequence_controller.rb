@@ -5,15 +5,12 @@ class SequenceController < ApplicationController
   def input; end
 
   def view
-    raise 'Ошибочный GET-запрос' if params[:values].nil?
-    raise 'Вы ничего не ввели' if params[:values].empty?
+    @input = validate_input params[:values]
 
-    @input = params[:values].split.map { |el| Integer el }
-    raise 'Последовательность короче 10 чисел' if @input.length < 10
+    subs_arr = find_increasing_subs.filter { |arr| arr.count > 1 }
+    @subs = subs_arr.map { |subseq| subseq.join(' ') }
+    @result = subs_arr.max_by(&:length).join(' ')
 
-    @result = @subs = find_increasing_subs.filter { |arr| arr.count > 1 }
-    @result = @result.max_by(&:length).join(' ')
-    @subs.map! { |subseq| subseq.join(' ') }
     @input = @input.join(' ')
   rescue StandardError => e
     @error = case e.class.to_s
@@ -30,5 +27,15 @@ class SequenceController < ApplicationController
       acc << [] if acc[-1].any? && el <= acc[-1][-1]
       acc[-1] << el
     end
+  end
+
+  def validate_input(input)
+    raise 'Ошибочный GET-запрос' if input.nil?
+    raise 'Вы ничего не ввели' if input.empty?
+
+    result = input.split.map { |el| Integer el }
+    raise 'Последовательность короче 10 чисел' if input.length < 10
+
+    result
   end
 end
