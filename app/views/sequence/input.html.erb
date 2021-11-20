@@ -1,0 +1,11 @@
+<h1 class="m-3">Поиск последовательности</h1>
+<p class="m-3 text-truncate">Будет определена наиболее длинная монотонно возрастающая последовательность чисел.</p>
+<div class="w-50">
+    <%= form_tag sequence_view_path, method: 'get', class: 'm-3' do %>
+            <div class="col-12"><%= label_tag :values, 'Введите последовательность чисел через пробел:' %></div>
+            <div class="row mt-2">
+                <div class="col-11 p-1 m-0"><%= text_field_tag :values, '', class: 'form-control', required: true %></div>
+                <div class="col-1 p-1 m-0"><%= button_tag "Найти", type: 'submit', name: nil, class: 'btn btn-primary' %></div>
+            </div>
+    <% end %>
+</div>
