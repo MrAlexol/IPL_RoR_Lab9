@@ -14,3 +14,6 @@ ActiveStorage.start()
 
 import "bootstrap"
 import "../stylesheets/application"
+
+
+require("custom/my_script.js")

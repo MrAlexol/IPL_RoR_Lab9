@@ -2,7 +2,9 @@
 
 # Контроллер для последовательности
 class SequenceController < ApplicationController
-  def input; end
+  def input
+    render layout: false
+  end
 
   def view
     @input = validate_input params[:values]
@@ -10,7 +12,6 @@ class SequenceController < ApplicationController
     @subs = subs_arr.map { |subseq| subseq.join(' ') }
     @result = subs_arr.max_by(&:length).join(' ')
     @input = @input.join(' ')
-
   rescue StandardError => e
     @error = case e.class.to_s
              when 'ArgumentError' then 'Введены посторонние символы'
