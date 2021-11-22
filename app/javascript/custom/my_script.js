@@ -6,17 +6,16 @@ document.addEventListener("DOMContentLoaded", function() {
 seq_url = location.protocol + "//" + location.host + "/sequence/view.json"
 
 function send_query() {
-    console.log("send query!")
-    let input_elem = document.getElementById("values")
-    console.log(input_elem.value)
-    var param_str = "?values=" + input_elem.value.split(" ").join("+")
-    console.log(param_str)
-    if (param_str == "") return false;
-    var received_data = [];
+    // console.log("send query!")
+    let input_elem = document.getElementById("values");
+    // console.log(input_elem.value)
+    let param_str = "?values=" + input_elem.value.split(" ").join("+");
+    // console.log(param_str)
+    let received_data = [];
     var http_request = new XMLHttpRequest();
     http_request.open("GET", seq_url + param_str, true);
     http_request.onreadystatechange = function () {
-        var done = 4, ok = 200;
+        let done = 4, ok = 200;
         if (http_request.readyState == done &&
             http_request.status == ok) {
             received_data = JSON.parse(http_request.responseText);
@@ -28,6 +27,9 @@ function send_query() {
 }
 
 function show_result(data) {
+    let typed_output = document.getElementById("typed_output");
+    typed_output.style.display = "block";
+    typed_output.innerText = `Вы ввели: ${document.getElementById("values").value.split(" ").join(" ")}`;
     let table = document.getElementById("result_table");
     let error_output_el = document.getElementById("error_output");
     table.style.display = "none";
@@ -56,7 +58,6 @@ function show_result(data) {
                 case "subs": {
                     subs_arr = data[i].value;
                     if (data[i].type !== "NilClass")
-                    //     throw new Error('No subs');
                     for (let j = 0; j < subs_arr.length; j++) {
                         let tr = document.createElement("tr");
                         tbody.appendChild(tr);

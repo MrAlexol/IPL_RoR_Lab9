@@ -6,6 +6,12 @@ class SequencesTest < ApplicationSystemTestCase
     @vars = {}
   end
 
+  test 'checking input to be equal string with user input' do
+    @driver.get(root_url)
+    @driver.find_element(:id, 'values').send_keys('0 3 6 8')
+    @driver.find_element(:id, 'btn_commit').click
+    assert_selector '#typed_output', text: '0 3 6 8'
+  end
   test 'checking error message for incorrect input' do
     @driver.get(root_url)
     @driver.find_element(:id, 'values').send_keys('0 3 abc')
