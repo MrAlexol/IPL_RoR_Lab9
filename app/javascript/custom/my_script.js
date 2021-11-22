@@ -50,6 +50,7 @@ function show_result(data) {
                     result_row.appendChild(td);
                     th.innerText = "Ответ";
                     td.innerText = data[i].value; 
+                    td.id = "result_field";
                     break;
                 }
                 case "subs": {
@@ -67,6 +68,7 @@ function show_result(data) {
                         tr.appendChild(td);
                         th.innerText = j + 1;
                         td.innerText = subs_arr[j];
+                        td.id= "result_field" + j;
                     }
                     break;
                 }
