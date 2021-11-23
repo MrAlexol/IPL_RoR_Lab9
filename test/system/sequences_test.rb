@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 require 'application_system_test_case'
 
+# Класс для системного тестирования при помощи Selenium
 class SequencesTest < ApplicationSystemTestCase
   setup do
     @driver = Capybara.current_session.driver.browser
