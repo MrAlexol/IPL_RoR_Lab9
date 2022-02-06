@@ -1,24 +1,15 @@
-# README
+# Лабораторная работа по курсу "ЯИП"
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> ЯИП — [Языки Интернет-программирования][1] 
 
-Things you may want to cover:
+## Тема
 
-* Ruby version
+Асинхронное взаимодействие клиента и сервера. JSON. Тесты Selenium.
 
-* System dependencies
+## Задание
 
-* Configuration
+1. При помощи Javascript модифицировать код [ЛР 8][2] таким образом, чтобы для отображения результатов вычисления браузер не выполнял полную перезагрузку страницы.
+2. Сформировать тесты для проверки работы программы при помощи Katalon Recorder / Selenium Webdriver.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[1]: <https://e-learning.bmstu.ru/iu6/course/view.php?id=119> "Курс \"ЯИП\" на сайте ведущей кафедры"
+[2]: <https://github.com/MrAlexol/IPL_RoR_Lab8> "Лабораторная работа №8"
